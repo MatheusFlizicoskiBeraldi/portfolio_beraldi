@@ -1,0 +1,57 @@
+.fundo-transparente {
+  background: transparent;
+  height: 100vh;
+}
+
+.barra-transparente {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.titulo-toolbar {
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #ff0055 0%, #ff5e62 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.menu-mortifero {
+  width: 250px;
+  background: rgba(15, 12, 41, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  color: white;
+  border-right: 1px solid rgba(255, 0, 85, 0.3);
+}
+
+.logo-menu {
+  padding: 2rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 1rem;
+}
+
+.logo-menu h2 {
+  color: #ff0055;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+/* Forçar a cor branca nos textos do menu do Angular Material */
+::ng-deep .mat-mdc-list-item-unscoped-content {
+  color: #fff !important;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.conteudo-dinamico {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 64px);
+}

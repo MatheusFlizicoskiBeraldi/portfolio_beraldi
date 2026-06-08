@@ -1,3 +1,30 @@
-<h1>{{ title()}} </h1>
+<mat-sidenav-container class="fundo-transparente">
+  
+  <mat-sidenav #sidenav mode="over" class="menu-mortifero">
+    <div class="logo-menu">
+      <h2>MENU</h2>
+    </div>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/" (click)="sidenav.toggle()">Início</a>
+      <a mat-list-item routerLink="/sobre" (click)="sidenav.toggle()">Sobre</a>
+      <a mat-list-item routerLink="/projetos" (click)="sidenav.toggle()">Projetos</a>
+      <a mat-list-item routerLink="/contato" (click)="sidenav.toggle()">Contato</a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-<p>Bem-Vindo ao meu portfólio -- em construção com Angular </p>
+  <mat-sidenav-content>
+    
+    <mat-toolbar class="barra-transparente">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="titulo-toolbar">PORTFÓLIO</span>
+    </mat-toolbar>
+
+    <div class="conteudo-dinamico">
+      <router-outlet></router-outlet>
+    </div>
+    
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+
+  background-image: url('/sabbath.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #000; /* Cor de segurança */
+  
+
+  position: relative;
+  z-index: 0;
+}
+
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  
+  background-image: url('/samurai.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: -2;
+  
+ 
+  animation: alternarFundo 40s infinite ease-in-out;
+}
+
+
+body::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.65); /* Escurece as imagens em 65%. Ajuste se quiser mais claro ou escuro */
+  z-index: -1;
+}
+
+
+@keyframes alternarFundo {
+  0%, 45% { opacity: 0; }     /* 0 a 18s: Imagem Cyberpunk invisível (Mostra Sabbath) */
+  50%, 95% { opacity: 1; }    /* 20s a 38s: Imagem Cyberpunk visível (Cobre o Sabbath) */
+  100% { opacity: 0; }        /* 40s: Volta a ficar invisível para reiniciar o ciclo */
+}

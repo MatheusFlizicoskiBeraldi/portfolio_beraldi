@@ -1,0 +1,56 @@
+.glass-card {
+  padding: 3rem;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  width: 100%;
+  max-width: 500px;
+}
+
+h2 {
+  text-align: center;
+  color: #ff5e62;
+  margin-bottom: 2rem;
+  letter-spacing: 2px;
+}
+
+.form-mortifero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  transition: border 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: #ff0055;
+}
+
+button {
+  padding: 1rem;
+  background: #ff0055;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: #ff5e62;
+  transform: scale(1.02);
+}
