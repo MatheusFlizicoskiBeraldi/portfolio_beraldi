@@ -14,14 +14,14 @@
 .titulo-toolbar {
   font-weight: 800;
   letter-spacing: 2px;
-  background: linear-gradient(90deg, #ff0055 0%, #ff5e62 100%);
+  background: rgba(83, 1, 1, 0.85);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .menu-mortifero {
   width: 250px;
-  background: rgba(15, 12, 41, 0.85);
+  background: rgba(49, 1, 1, 0.85);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   color: white;
@@ -31,12 +31,12 @@
 .logo-menu {
   padding: 2rem 1rem;
   text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(49, 1, 1, 0.85);
   margin-bottom: 1rem;
 }
 
 .logo-menu h2 {
-  color: #ff0055;
+  color: #50001b;
   font-weight: 800;
   letter-spacing: 3px;
 }
