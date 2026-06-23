@@ -1,17 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Contato } from './contato';
+// Importa o componente do arquivo contato.ts
+import { ContatoComponent } from './contato'; 
 
-describe('Contato', () => {
-  let component: Contato;
-  let fixture: ComponentFixture<Contato>;
+describe('ContatoComponent', () => {
+  let component: ContatoComponent;
+  let fixture: ComponentFixture<ContatoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Contato],
+      imports: [ContatoComponent], 
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Contato);
+    fixture = TestBed.createComponent(ContatoComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

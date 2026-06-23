@@ -1,3 +1,32 @@
+/* --- NOVO: Layout principal --- */
+.contato-wrapper {
+  display: flex;
+  flex-direction: column; /* Empilha no celular */
+  align-items: center;
+  justify-content: center;
+  gap: 3rem; /* Espaço entre a esfera e o formulário */
+  padding: 2rem;
+  min-height: 80vh; /* Garante que ocupe um bom espaço da tela */
+}
+
+/* --- Container do Canvas Atualizado --- */
+.canvas-container {
+  width: 100%;
+  max-width: 600px; /* Limita ao tamanho máximo do canvas */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centraliza a esfera */
+  border-radius: 8px;
+}
+
+/* --- Canvas Responsivo --- */
+canvas {
+  display: block;
+  max-width: 100%; /* Faz a esfera diminuir em telas pequenas (celulares) */
+  height: auto;
+}
+
+/* --- O Form do Glass Card Permanece Quase Igual --- */
 .glass-card {
   padding: 3rem;
   background: rgba(0, 0, 0, 0.6);
@@ -53,4 +82,12 @@ button {
 button:hover {
   background: #ff5e62;
   transform: scale(1.02);
+}
+
+/* --- NOVO: Lado a Lado em Telas Maiores (PC) --- */
+@media (min-width: 992px) {
+  .contato-wrapper {
+    flex-direction: row; /* Coloca lado a lado no PC */
+    justify-content: space-evenly;
+  }
 }

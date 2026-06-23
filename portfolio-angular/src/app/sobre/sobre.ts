@@ -12,7 +12,7 @@ export class Sobre implements AfterViewInit {
   
   private ctx!: CanvasRenderingContext2D;
   private particlesArray: Particle[] = [];
-  private mouse = { x: 0, y: 0, radius: 40 }; // Radius é a área de efeito do mouse
+  private mouse = { x: 0, y: 0, radius: 30 }; // Radius é a área de efeito do mouse
 
   ngAfterViewInit(): void {
     const canvas = this.canvasRef.nativeElement;
@@ -97,7 +97,7 @@ class Particle {
   }
 
   draw() {
-    this.ctx.fillStyle = '#8f8f8f'; // Cor das partículas (você pode mudar)
+    this.ctx.fillStyle = '#580000'; // Cor das partículas (você pode mudar)
     this.ctx.beginPath();
     this.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     this.ctx.closePath();
