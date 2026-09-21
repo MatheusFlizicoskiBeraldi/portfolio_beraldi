@@ -1,13 +1,24 @@
-<div class="glass-card">
-  <h2>Meus Arquivos</h2>
-  <div class="grid-projetos">
-    <div class="projeto-item">
-      <h3>Projeto Alpha</h3>
-      <p>Desenvolvimento frontend com Angular e APIs REST.</p>
-    </div>
-    <div class="projeto-item">
-      <h3>Projeto Beta</h3>
-      <p>Interface de usuário avançada com CSS Animations.</p>
-    </div>
-  </div>
-</div>
+@if (carregando) {
+  <p> Carregando projetos...</p>
+}
+@if (erro) {
+  <p> {{ erro }} </p>
+}
+@if (!carregando && projetos.length === 0) {
+  <p> Nenhum projeto encontrado. </p>
+}
+
+
+@for (p of projetos; track p.id) {
+  <mat-card style="margin-bottom: 12px;">
+    <mat-card-header>
+      <mat-card-title> {{ p.nome }} </mat-card-title>
+      <mat-card-subtitle> {{ p.tecnologias }}  -  {{ p.ano }} </mat-card-header>/mat-card-subtitle>
+        <mat-card-content> [{ p.descricao }] </mat-card-content>
+        <mat-card-action>   
+          @if (p.link) {
+            <a mat-button [href]="p.link_github" target="_blank"> Acessar projeto </a>
+          }
+        </mat-card-action>
+  </mat-card>
+}
