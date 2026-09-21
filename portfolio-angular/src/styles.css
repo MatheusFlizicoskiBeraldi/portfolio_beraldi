@@ -58,3 +58,16 @@ body::after {
   50%, 95% { opacity: 1; }    /* 20s a 38s: Imagem Cyberpunk visível (Cobre o Sabbath) */
   100% { opacity: 0; }        /* 40s: Volta a ficar invisível para reiniciar o ciclo */
 }
+
+/* Adicione no final do arquivo styles.css existente */
+
+/* Oculta a barra de rolagem visualmente (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  /* Oculta no IE/Edge antigo e Firefox */
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
