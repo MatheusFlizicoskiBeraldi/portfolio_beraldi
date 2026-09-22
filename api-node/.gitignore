@@ -1,0 +1,4 @@
+# 70 pacotes reconstruiveis com npm install: nao vao para o Github node_modules/
+
+node_modules/
+
