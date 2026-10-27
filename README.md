@@ -9,3 +9,6 @@ Justificativa (cite o arquivo de cada critério):
 - Boas praticas: a URL/HTTP fica no service; o componente so exibe
 - Autoavaliacao: É um assunto simples, mas que precisa entender dos assuntos apresentados anteriormente para que consiga progredir na matéria. O uso da API e mat-card-actions entraram para o portfólio de conhecimento. Fiz na pressa por conta do prazo curto.
 
+## Autoavaliação
+
+Considero que mereço o conceito **C** nesta atividade. Consegui acompanhar a estrutura da aula e aplicar o middleware de autenticação na rota POST, mas tive dificuldade com partes do fluxo.
