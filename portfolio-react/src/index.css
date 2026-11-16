@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Doto:wght@700;900&family=Oswald:wght@300;400;500&display=swap");
+
+:root {
+  --preto: #000000;
+  --vermelho: #e8302b;        /* texto */
+  --neon: #ff4d4a;            /* contornos e brilho */
+  --rosa-neon: #ff9b97;       /* preenchimentos claros */
+  --vermelho-escuro: #3a0504; /* grade e ruído */
+
+  --fonte-ponto: "Doto", "VT323", "Courier New", monospace;
+  --fonte-texto: "Oswald", "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--preto);
+  color: var(--vermelho);
+  font-family: var(--fonte-texto);
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 6px rgba(255, 60, 55, 0.45);
+}
+
+/* Linhas de varredura de monitor CRT */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.35) 3px
+  );
+}
+
+/* Colunas pontilhadas nas laterais, como o ruído da referência */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle, rgba(232, 48, 43, 0.75) 0.7px, transparent 1px) 0 0 / 3px 3px,
+    radial-gradient(circle, rgba(232, 48, 43, 0.75) 0.7px, transparent 1px) 0 0 / 3px 3px;
+  background-repeat: no-repeat;
+  background-size: 6vw 100%, 6vw 100%;
+  background-position: left 3vw top 0, right 3vw top 0;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
+  opacity: 0.55;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem;
+}
+
+/* Títulos em fonte de pontos (LED) */
+h1, h2, h3 {
+  margin: 0 0 1rem;
+  font-family: var(--fonte-ponto);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--neon);
+  text-shadow: 0 0 4px var(--neon), 0 0 14px rgba(255, 40, 40, 0.7);
+}
+
+h1 { font-size: clamp(2.4rem, 7vw, 4.5rem); }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.3rem; }
+
+p { margin: 0 0 1rem; }
+
+a {
+  color: var(--neon);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+a:hover { color: var(--rosa-neon); }
+
+/* Cards: contorno neon, centro preto */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+}
+
+.card {
+  position: relative;
+  background: var(--preto);
+  border: 1.5px solid var(--neon);
+  border-radius: 4px;
+  padding: 1.5rem;
+  color: var(--vermelho);
+  box-shadow:
+    0 0 10px rgba(255, 60, 55, 0.55),
+    inset 0 0 14px rgba(255, 60, 55, 0.25);
+}
+
+.card h2, .card h3 { margin-top: 0; }
+
+/* Falha horizontal, como a faixa cortada na ilustração */
+.card:hover::after {
+  content: "";
+  position: absolute;
+  left: -6px;
+  right: -6px;
+  top: 55%;
+  height: 4px;
+  background: var(--rosa-neon);
+  opacity: 0.85;
+  clip-path: inset(0 30% 0 0);
+  animation: falha 0.4s steps(3) 1;
+}
+
+@keyframes falha {
+  0%   { transform: translateX(-10px); clip-path: inset(0 60% 0 0); }
+  50%  { transform: translateX(8px);   clip-path: inset(0 10% 0 40%); }
+  100% { transform: translateX(0);     clip-path: inset(0 30% 0 0); }
+}
+
+/* Rodapé vermelho */
+footer {
+  position: relative;
+  z-index: 1;
+  background: var(--vermelho);
+  color: var(--preto);
+  text-align: center;
+  padding: 1.25rem;
+  text-shadow: none;
+  box-shadow: 0 -4px 24px rgba(255, 40, 40, 0.5);
+}
+
+footer p, footer a, footer span {
+  color: var(--preto);
+  margin: 0;
+}
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--rosa-neon);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover::after { animation: none; }
+}
