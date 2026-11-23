@@ -1,38 +1,57 @@
-
+import { useEffect, useState } from 'react';
+import API from './api.js';
 import Cabecalho from './Cabecalho.jsx';
 import CardProjeto from './CardProjeto.jsx';
+import Contato from './Contato.jsx';
 import Rodape from './Rodape.jsx';
 
 // App: o componente raiz. Ele monta a pagina com os outros componentes.
 function App() {
+  const [projetos, setProjetos] = useState([]);
+  const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState('');
+
+  // buscarProjetos: pede a lista para a API e guarda a resposta no estado.
+  async function buscarProjetos() {
+   try{
+    const resposta = await fetch(API + '/api/projetos');
+    if (!resposta.ok) {
+      throw new Error('a API respondeu ' + resposta.status);
+    }
+    const dados = await resposta.json();
+    setProjetos(dados);
+   } catch (falha) {
+    setErro('Não deu para carregar os projetos: ' + falha.message);
+
+  }
+
+  }
+
+  // O efeito roda depois que a tela foi desenhada. A lista vazia do fim diz:
+  useEffect(() => {
+    buscarProjetos();
+  }, []);
+
   return (
     <>
       <Cabecalho />
       <main>
         <h2>Projetos</h2>
+        {carregando && <p>Carregando projetos...</p>}
+        {erro && <p className='erro'>{erro}</p>}
         <div className="cards">
-          <CardProjeto
-            nome="Portfolio Angular"
-            descricao="Meu portfolio com Angular e Angular Material."
-            tecnologias="Angular, TypeScript"
-            link_github="https://github.com/seu-usuario/2026-DWII-portfolio-an"
-            ano={2026}
-          />
-          <CardProjeto
-            nome="API do Portfolio em PHP"
-            descricao="Endpoints de projetos e catalogo com PDO e MariaDB."
-            tecnologias="PHP, MariaDB"
-            link_github={null}
-            ano={2026}
-          />
-          <CardProjeto
-            nome="Sistema de Cadastro v1"
-            descricao="CRUD em PHP do 1o trimestre."
-            tecnologias="PHP, MariaDB, Bootstrap"
-            link_github={null}
-            ano={2026}
-          />
+          {projetos.map((p) => (
+            <CardProjeto
+              key={p.id}
+              nome={p.nome}
+              descricao={p.descricao}
+              tecnologias={p.tecnologias}
+              link_github={p.link_github}
+              ano={p.ano}
+            />
+          ))}
         </div>
+        <Contato />
       </main>
       <Rodape />
     </>
